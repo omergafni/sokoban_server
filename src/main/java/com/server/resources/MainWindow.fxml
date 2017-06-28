@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.server.view.MainWindowController">
    <top>
       <Label alignment="CENTER" prefHeight="30.0" prefWidth="600.0" text="Admin Control Panel" textAlignment="CENTER" BorderPane.alignment="CENTER">
@@ -32,13 +38,14 @@
       </HBox>
    </bottom>
    <center>
-      <TableView fx:id="table" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="table" prefHeight="332.0" prefWidth="543.0" BorderPane.alignment="CENTER">
         <columns>
             <TableColumn fx:id="clientId" prefWidth="102.0" text="Client ID" />
-            <TableColumn fx:id="level" prefWidth="96.0" text="Level" />
-            <TableColumn fx:id="time" prefWidth="94.0" text="Time" />
-            <TableColumn fx:id="status" prefWidth="220.0" text="Status" />
-            <TableColumn fx:id="action" prefWidth="87.0" text="Action" />
+            <TableColumn fx:id="time" prefWidth="130.0" text="Time" />
+            <TableColumn fx:id="status" prefWidth="186.0" text="Status" />
+            <TableColumn fx:id="approve" prefWidth="79.0" text="Approve" />
+           <TableColumn fx:id="refuse" prefWidth="79.0" text="Refuse" />
+
         </columns>
       </TableView>
    </center>

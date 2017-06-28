@@ -34,7 +34,9 @@ public class App extends Application {
             catch (IOException e) {e.printStackTrace();}
         }).start();
 
-        //primaryStage.setOnCloseRequest(event -> sokoView.exit());
+        primaryStage.setOnCloseRequest(event -> {
+            myServerModel.stop();
+        });
         primaryStage.setScene(new Scene(root,600,600));
         primaryStage.setTitle("Sokoban Solution Server");
         primaryStage.show();

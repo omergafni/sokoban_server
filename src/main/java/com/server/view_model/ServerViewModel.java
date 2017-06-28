@@ -14,10 +14,14 @@ public class ServerViewModel extends Observable implements Observer {
     private ServerModel model;
     private ObservableList<ConnectedClient> data = FXCollections.observableArrayList();
     private SimpleStringProperty selectedMode;
+    private SimpleStringProperty approveId;
+    private SimpleStringProperty isRefused;
 
     public ServerViewModel(ServerModel model) {
         this.model = model;
         this.selectedMode = new SimpleStringProperty();
+        this.approveId = new SimpleStringProperty();
+        this.isRefused = new SimpleStringProperty();
         this.selectedMode.addListener((observable, oldValue, newValue) -> {
             if(newValue.contains("auto")){
                 model.setAutoSolve(true);
@@ -25,6 +29,12 @@ public class ServerViewModel extends Observable implements Observer {
             else{
                 model.setAutoSolve(false);
             }
+        });
+        this.approveId.addListener((observable, oldValue, newValue) -> {
+            model.awakeClient(Integer.parseInt(newValue));
+        });
+        this.isRefused.addListener((observable, oldValue, newValue) -> {
+            model.disconnectClient(Integer.parseInt(newValue));
         });
     }
 
@@ -35,9 +45,36 @@ public class ServerViewModel extends Observable implements Observer {
         notifyObservers(data);
     }
 
-    public SimpleStringProperty getSelectedMode() {
-        return this.selectedMode;
+    public String getSelectedMode() {
+        return selectedMode.get();
     }
 
 
+    public SimpleStringProperty selectedModeProperty() {
+        return selectedMode;
+    }
+
+    public void setSelectedMode(String selectedMode) {
+        this.selectedMode.set(selectedMode);
+    }
+
+    public String getApproveId() {
+        return approveId.get();
+    }
+
+    public SimpleStringProperty approveIdProperty() {
+        return approveId;
+    }
+
+    public void setApproveId(String approveId) {
+        this.approveId.set(approveId);
+    }
+
+    public String getIsRefused() {
+        return isRefused.get();
+    }
+
+    public SimpleStringProperty isRefusedProperty() {
+        return isRefused;
+    }
 }
