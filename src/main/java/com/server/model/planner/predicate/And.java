@@ -2,10 +2,17 @@ package com.server.model.planner.predicate;
 
 import java.util.HashSet;
 
+/**
+ * And is a logic "and" predicate
+ */
 public class And extends Predicate {
 
     private HashSet<Predicate> predicates;
 
+    /**
+     * Constructor
+     * @param predicates is all the predicates that include in the AND predicate
+     */
     public And(Predicate... predicates){
         super("and","","");
         this.predicates = new HashSet<>();
@@ -17,6 +24,10 @@ public class And extends Predicate {
         }
     }
 
+    /**
+     * Adding predicate to the current AND predicate
+     * @param p
+     */
     public void addPredicate(Predicate p){
         if(predicates == null)
             predicates = new HashSet<>();
@@ -36,20 +47,20 @@ public class And extends Predicate {
         return false;
     }
 
-    public boolean satisfies(And clause){
-        for(Predicate p : clause.predicates){
-            if(!satisfies(p))
-                return false;
-        }
-        return true;
-    }
 
+    /**
+     * Updating the AND predicate state regarding the given effect
+     * @param effect
+     */
     public void update(And effect){
         effect.predicates.forEach((Predicate p)->this.predicates.removeIf((Predicate pr)-> p.contradicts(pr)));
         predicates.addAll(effect.predicates);
         updateDescription();
     }
 
+    /**
+     * Updating the AND predicate description
+     */
     public void updateDescription(){
         StringBuilder sb = new StringBuilder();
         sb.append("{");

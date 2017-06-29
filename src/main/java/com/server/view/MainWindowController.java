@@ -17,7 +17,9 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
-// Our View
+/**
+ * MainWindowsController is the view of the server application.
+ */
 public class MainWindowController implements ServerView, Observer, Initializable {
 
     ServerViewModel vm;
@@ -93,6 +95,10 @@ public class MainWindowController implements ServerView, Observer, Initializable
         });
     }
 
+    /**
+     * Setting a view-model and binds the desire variable between the view and the view-model
+     * @param vm is the view-model
+     */
     public void setViewModel(ServerViewModel vm){
         this.vm = vm;
         vm.selectedModeProperty().bind(this.selectedMode);

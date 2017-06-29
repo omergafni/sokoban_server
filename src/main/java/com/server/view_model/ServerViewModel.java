@@ -9,6 +9,9 @@ import javafx.collections.ObservableList;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * ServerViewModel is the view-model layer of the sokoban server application
+ */
 public class ServerViewModel extends Observable implements Observer {
 
     private ServerModel model;
@@ -23,19 +26,15 @@ public class ServerViewModel extends Observable implements Observer {
         this.approveId = new SimpleStringProperty();
         this.isRefused = new SimpleStringProperty();
         this.selectedMode.addListener((observable, oldValue, newValue) -> {
-            if(newValue.contains("auto")){
+            if(newValue.contains("auto"))
                 model.setAutoSolve(true);
-            }
-            else{
+            else
                 model.setAutoSolve(false);
-            }
         });
-        this.approveId.addListener((observable, oldValue, newValue) -> {
-            model.awakeClient(Integer.parseInt(newValue));
-        });
-        this.isRefused.addListener((observable, oldValue, newValue) -> {
-            model.disconnectClient(Integer.parseInt(newValue));
-        });
+        this.approveId.addListener((observable, oldValue, newValue) ->
+                model.awakeClient(Integer.parseInt(newValue)));
+        this.isRefused.addListener((observable, oldValue, newValue) ->
+                model.disconnectClient(Integer.parseInt(newValue)));
     }
 
     @Override
@@ -48,7 +47,6 @@ public class ServerViewModel extends Observable implements Observer {
     public String getSelectedMode() {
         return selectedMode.get();
     }
-
 
     public SimpleStringProperty selectedModeProperty() {
         return selectedMode;

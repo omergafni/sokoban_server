@@ -2,6 +2,9 @@ package com.server.model.searcher.searchable;
 
 import java.util.LinkedList;
 
+/**
+ * Solution represent the solution for the plan/search problem as an actions list
+ */
 public class Solution {
 
     private LinkedList<Action> actions = new LinkedList<>();

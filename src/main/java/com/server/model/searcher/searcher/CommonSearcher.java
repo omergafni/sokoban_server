@@ -7,6 +7,10 @@ import com.server.model.searcher.searchable.State;
 import java.util.LinkedList;
 import java.util.PriorityQueue;
 
+/**
+ * CommonSearcher is an abstraction of searchers objects
+ * @param <T> is the state parameter
+ */
 public abstract class CommonSearcher<T> implements Searcher<T> {
 
     protected PriorityQueue<State<T>> openList;
@@ -22,6 +26,11 @@ public abstract class CommonSearcher<T> implements Searcher<T> {
         return openList.poll();
     }
 
+    /**
+     * Back tracing the solution so the solution will show in the correct order
+     * @param goalState is the state we will back trace from
+     * @return the solution
+     */
     protected Solution backTrace(State<T> goalState) {
         LinkedList<Action> actions = new LinkedList<>();
         State<T> currState = goalState;

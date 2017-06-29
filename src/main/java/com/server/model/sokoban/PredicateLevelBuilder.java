@@ -2,7 +2,6 @@ package com.server.model.sokoban;
 
 import com.server.model.planner.predicate.And;
 import com.server.model.planner.predicate.Predicate;
-import com.server.utils.FileReader;
 
 import java.util.ArrayList;
 
@@ -39,11 +38,6 @@ public class PredicateLevelBuilder {
             }
         }
         return kb;
-    }
-
-    public void readFile(String path){
-        FileReader reader = new FileReader();
-        level = reader.fileToGrid(path);
     }
 
     public void setLevel(ArrayList<char[]> level) {

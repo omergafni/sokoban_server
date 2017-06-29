@@ -15,7 +15,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
-
+/**
+ * MyServerModel is a sokoban server that handle sokoban clients and provide a level-solution service
+ */
 public class MyServerModel extends Observable implements ServerModel {
 
     private static int threadId = 0;
@@ -27,6 +29,11 @@ public class MyServerModel extends Observable implements ServerModel {
     private boolean autoSolve = true;
     private Map<Integer, ClientThread> threadMap;
 
+    /**
+     * Constructor
+     * @param port is the server listening port
+     * @param ch is the client handler
+     */
     public MyServerModel(int port, ClientHandler ch) {
         this.port = port;
         this.ch = ch;
@@ -79,6 +86,10 @@ public class MyServerModel extends Observable implements ServerModel {
         }
     }
 
+    /**
+     * Handle a client via the client handler.
+     * @param aClient is the connected client to handle
+     */
     public void handleConnectedClient(Socket aClient) {
         try {
             // Communicate with client and send the solution
@@ -91,6 +102,11 @@ public class MyServerModel extends Observable implements ServerModel {
         }
     }
 
+    /**
+     * Initialize a ConnectedClient object for the client.
+     * @param aClient
+     * @param threadId
+     */
     private void createClientData(Socket aClient, int threadId) {
 
         // Create the user connection time
@@ -109,6 +125,9 @@ public class MyServerModel extends Observable implements ServerModel {
         notifyObservers(client);
     }
 
+    /**
+     * Stops the server and perform a clean exit.
+     */
     public void stop() {
         threadPool.shutdown();
         threadMap.forEach((integer, clientThread) -> {

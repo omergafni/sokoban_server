@@ -7,6 +7,10 @@ import com.server.model.searcher.searchable.State;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+/**
+ * BFS is a search algorithm
+ * @param <T> is the parameter of the states
+ */
 public class BFS<T> extends CommonSearcher<T> {
 
     @Override

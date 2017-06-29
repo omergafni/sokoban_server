@@ -9,8 +9,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
+/**
+ * Strips is a planning algorithm
+ */
 public class Strips implements Planner {
-
 
     @Override
     public List<PlanAction> computePlan(Plannable plannable, HeuristicMethods h) {

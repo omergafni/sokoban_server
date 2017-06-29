@@ -14,10 +14,6 @@ public class PlayerSearchable extends SokobanCommonSearchable {
         super(grid);
     }
 
-    public PlayerSearchable(String filePath) {
-        super(filePath);
-    }
-
     @Override
     public ArrayList<State<Position>> getAllPossibleStates(State<Position> s) {
 

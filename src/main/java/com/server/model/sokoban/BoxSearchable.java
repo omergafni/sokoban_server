@@ -12,10 +12,6 @@ public class BoxSearchable extends SokobanCommonSearchable {
         super(grid);
     }
 
-    public BoxSearchable(String filePath) {
-        super(filePath);
-    }
-
     @Override
     public ArrayList<State<Position>> getAllPossibleStates(State<Position> s) {
 

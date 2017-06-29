@@ -1,10 +1,13 @@
 package com.server.model.client;
 
-
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Button;
 
+/**
+ * ConnectedClient is a client property class that represents the connected client data.
+ * This is used by the GUI layer to represents a connected client.
+ */
 public class ConnectedClient {
 
     private final SimpleStringProperty clientId;
@@ -14,6 +17,13 @@ public class ConnectedClient {
     private final SimpleObjectProperty<Button> refuseButton;
     private final int threadId;
 
+    /**
+     * Constructor
+     * @param clientId is the key of the object
+     * @param time is the time that the user made a connection request
+     * @param status is the current server status that define if the specific user will get the solution automatically or by admin discretion
+     * @param threadId is the id for the client thread. used by the server thread map to access a thread
+     */
     public ConnectedClient(SimpleStringProperty clientId, SimpleStringProperty time,
                            SimpleStringProperty status, int threadId) {
         this.clientId = clientId;

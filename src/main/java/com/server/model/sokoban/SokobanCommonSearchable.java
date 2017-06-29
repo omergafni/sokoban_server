@@ -5,7 +5,6 @@ import com.server.model.searcher.searchable.Action;
 import com.server.model.searcher.searchable.Position;
 import com.server.model.searcher.searchable.Searchable;
 import com.server.model.searcher.searchable.State;
-import com.server.utils.FileReader;
 
 import java.util.ArrayList;
 
@@ -20,9 +19,6 @@ public abstract class SokobanCommonSearchable implements Searchable<Position> {
         this.grid = grid;
     }
 
-    public SokobanCommonSearchable(String levelPath) {
-        readFile(levelPath);
-    }
 
     public void setInitialState(State<Position> initialState) {
         this.initialState = initialState;
@@ -79,12 +75,6 @@ public abstract class SokobanCommonSearchable implements Searchable<Position> {
     @Override
     public State<Position> getGoalState() {
         return goalState;
-    }
-
-    private void readFile(String path){
-
-        FileReader reader = new FileReader();
-        grid = reader.fileToGrid(path);
     }
 
 

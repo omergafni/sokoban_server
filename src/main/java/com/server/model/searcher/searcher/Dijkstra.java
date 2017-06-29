@@ -6,6 +6,10 @@ import com.server.model.searcher.searchable.State;
 
 import java.util.*;
 
+/**
+ * Dijkstra is a search algorithm
+ * @param <T> is the parameter of the states
+ */
 public class Dijkstra<T> extends CommonSearcher<T> {
 
     private Set<State<T>> settledNodes;
@@ -64,24 +68,6 @@ public class Dijkstra<T> extends CommonSearcher<T> {
         }
         return neighbors;
     }
-
-//    public Solution getPath(State<T> target) {
-//        LinkedList<Action> path = new LinkedList<>();
-//        State<T> step = predecessors.get(target);
-//        // check if a path exists
-//        if (step == null) {
-//            return null;
-//        }
-//        path.add(step.getAction());
-//        while (predecessors.get(step).getAction() != null) {
-//            step = predecessors.get(step);
-//            path.add(step.getAction());
-//        }
-//        Collections.reverse(path);
-//        Solution sol = new Solution();
-//        sol.setActions(path);
-//        return sol;
-//    }
 
     private State<T> getMinimum(Set<State<T>> vertexes) {
         State<T> minimum = null;

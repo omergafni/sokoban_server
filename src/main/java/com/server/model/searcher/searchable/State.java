@@ -1,5 +1,9 @@
 package com.server.model.searcher.searchable;
 
+/**
+ * State represent a state of a searchable object
+ * @param <T> describe the type of the state (i.e. <Position>)
+ */
 public class State<T> implements Comparable{
 
     private T state;
@@ -7,6 +11,11 @@ public class State<T> implements Comparable{
     private State<T> cameFrom;
     private Action action;
 
+    /**
+     * Constructor
+     * @param state is the state parameter (i.e. 'Position'>
+     * @param cost is the cost for this state
+     */
     public State(T state, double cost) {
         this.state = state;
         this.cost = cost;
@@ -14,6 +23,13 @@ public class State<T> implements Comparable{
         this.action = null;
     }
 
+    /**
+     * Constructor
+     * @param state is the state parameter (i.e. 'Position'>
+     * @param cost is the cost for this state
+     * @param cameFrom is the state before
+     * @param action is the action that have to be made to achieve this state
+     */
     public State(T state, double cost, State<T> cameFrom, Action action) {
         this.state = state;
         this.cost = cost;

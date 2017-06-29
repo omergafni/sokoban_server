@@ -1,5 +1,8 @@
 package com.server.model.searcher.searchable;
 
+/**
+ * Position represent a position in the game board
+ */
 public class Position {
 
     private int row;

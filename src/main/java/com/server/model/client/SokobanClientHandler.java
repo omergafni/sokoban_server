@@ -19,12 +19,18 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * SokobanClientHandler is used by the sokoban server to handle a sokoban client that request a solution for the game.
+ * this handler make a connection to the sokoban web service and ask for the level solution,
+ * if the solution already exist, then the handler send the solution to the user.
+ * Otherwise, the handler invoke the solveLevel() method to get a solution and send it to the client.
+ * The handler is updating the web service also after getting the solution.
+ */
 public class SokobanClientHandler implements ClientHandler {
 
     private final String url = "http://localhost:8080/webresources/solutions";
     PrintWriter out = null;
     LevelGrid level = null;
-
 
     public void handleClient(InputStream fromClient, OutputStream toClient) {
         ObjectInputStream ois = null;
@@ -86,7 +92,6 @@ public class SokobanClientHandler implements ClientHandler {
         }
 
     }
-
 
     /**
      * Solves the level using the solving algorithm and return the parsed solution
